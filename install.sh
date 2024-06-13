@@ -47,6 +47,7 @@ sudo mv ~/Downloads/nvim.appimage /usr/bin/nvim
     echo ""
     echo "alias vim='nvim'"
     echo "alias bat='batcat'"
+    echo "alias cbat='batcat --paging=never'"
     echo "alias claer='clear'"
     echo "alias celar='clear'"
     echo "alias clera='clear'"
