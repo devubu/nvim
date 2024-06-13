@@ -4,7 +4,6 @@ Use Neovim and Tmux with Alacritty.
 
 ## Installation
 
-    
     sudo apt update -y
 
     sudo apt upgrade -y
@@ -16,6 +15,8 @@ Use Neovim and Tmux with Alacritty.
     sudo apt install -y ripgrep
     
     sudo apt install -y fzf
+
+    sudo apt install -y bat
 
     sudo apt install -y alacritty
     
@@ -58,6 +59,12 @@ Use Neovim and Tmux with Alacritty.
     echo "" >> ~/.zshrc
 
     echo "alias vim='nvim'" >> ~/.zshrc
+
+    echo "alias bat='batcat'" >> ~/.zshrc
+
+    echo "alias copy='xclip -sel clip'" >> ~/.zshrc
+
+    echo "alias paste='xclip -o -sel clip'" >> ~/.zshrc
     
     echo "" >> ~/.zshrc
 
