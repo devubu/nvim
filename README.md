@@ -1,7 +1,9 @@
 <h1 align="center">Custom NvChad</h1>
 
+Use Neovim and Tmux with Alacritty.
+
 ## Installation
---------------------
+
     
     sudo apt update -y
 
