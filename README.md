@@ -62,6 +62,22 @@ Use Neovim and Tmux with Alacritty.
 
     echo "alias bat='batcat'" >> ~/.zshrc
 
+    echo "alias claer='clear'" >> ~/.zshrc
+    
+    echo "alias celar='clear'" >> ~/.zshrc
+    
+    echo "alias clera='clear'" >> ~/.zshrc
+    
+    echo "alias caler='clear'" >> ~/.zshrc
+    
+    echo "alias clare='clear'" >> ~/.zshrc
+    
+    echo "alias caelr='clear'" >> ~/.zshrc
+    
+    echo "alias cealr='clear'" >> ~/.zshrc
+    
+    echo "alias celra='clear'" >> ~/.zshrc
+
     echo "alias copy='xclip -sel clip'" >> ~/.zshrc
 
     echo "alias paste='xclip -o -sel clip'" >> ~/.zshrc
