@@ -6,7 +6,7 @@ Use Neovim and Tmux with Alacritty.
 
     git clone https://github.com/devubu/nvim.git ~/.config/nvim
 
-    zsh ~/.config/nvim/install.sh
+    source ~/.config/nvim/install.sh
 
 ## Showcase
 
