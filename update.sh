@@ -1,5 +1,5 @@
 #!/bin/zsh
 
-git pull ~/.config/nvim
-git pull ~/.config/tmux
-git pull ~/.config/alacritty
+git -C ~/.config/nvim pull 
+git -C ~/.config/tmux pull
+git -C ~/.config/alacritty pull
