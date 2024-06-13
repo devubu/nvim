@@ -86,6 +86,12 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - Popup mappings keysheet [whichkey.nvim](https://github.com/folke/which-key.nvim)
 - Navigate seamlessly between nvim and tmux splits using a consistent set of hotkeys [vim-tmux-navigator](https://github.com/christoomey/vim-tmux-navigator)
 
+## Tmux Keybindings
+
+- The prefix key for Tmux is Control + Space for more convenient access.
+- Bind | to split window horizontally and stay in the current directory
+- Bind _ to split window vertically and stay in the current directory
+
 ## Credits
 
 - https://github.com/NvChad/NvChad
