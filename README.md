@@ -173,5 +173,5 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 ## Credits
 
 - https://github.com/NvChad/NvChad
-- @lorvethe for making the beautiful NvChad logo.
+- @lorvethe for making the NvChad logo.
 
