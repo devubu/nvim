@@ -173,6 +173,5 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 ## Credits
 
 - https://github.com/NvChad/NvChad
-- [Elianiva](https://github.com/elianiva) helped me with NeoVim Lua related issues many times, helped me in my initial neovim journey!
 - @lorvethe for making the beautiful NvChad logo.
 
