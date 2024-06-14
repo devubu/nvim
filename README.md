@@ -2,10 +2,28 @@
 
 Use Neovim and Tmux with Alacritty.
 
+## Features
+
+- Custom Neovim configuration
+
+- Custom Tmux configuration
+
+- Custom Alacritty configuration
+
+- Custom .zshrc configuration
+
 ## Installation
 
     git clone https://github.com/devubu/nvim.git ~/.config/nvim
 
+    source ~/.config/nvim/install.sh
+
+## Update
+
+    git -C ~/.config/nvim pull
+    
+    zsh ~/.config/nvim/update.sh
+    
     source ~/.config/nvim/install.sh
 
 ## Showcase
