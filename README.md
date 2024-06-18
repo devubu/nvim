@@ -107,8 +107,27 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 ## Tmux Keybindings
 
 - The prefix key for Tmux is Control + Space for more convenient access.
-- Bind | to split window horizontally and stay in the current directory
-- Bind _ to split window vertically and stay in the current directory
+- 'ctrl + space + shift + |' => Bind | to split window horizontally and stay in the current directory
+- 'ctrl + space + shift + _' => Bind _ to split window vertically and stay in the current directory
+- 'ctrl + h' => Left
+- 'ctrl + j' => Down
+- 'ctrl + k' => Up
+- 'ctrl + l' => Right
+
+## Neovim Keybindings
+
+- The leader key for neovim is Space.
+- 'space + ch' or ':NvCheatsheet' to view neovim keybindings
+- 'space + fw' to live grep
+- 'space + ff' to find files
+- 'space + e' to toggle nvimtree
+- 'shift + zz' or ':wq' to save and exit
+- 'shift + zq' or ':q' to exit without saving
+- `h` or Left Arrow (`←`) to move the cursor left one character
+- `j` or Down Arrow (`↓`) to move the cursor down one line
+- `k` or Up Arrow (`↑`) to move the cursor up one line
+- `l` or Right Arrow (`→`) to move the cursor right one character
+- '/' to search for text within the current file
 
 ## Credits
 
