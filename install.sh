@@ -43,24 +43,71 @@ sudo chmod +x ~/Downloads/nvim.appimage
 sudo mv ~/Downloads/nvim.appimage /usr/bin/nvim
 
 # Update .zshrc with aliases and environment variables
-{
-    echo ""
-    echo "alias vim='nvim'"
-    echo "alias bat='batcat'"
-    echo "alias cbat='batcat --paging=never'"
-    echo "alias claer='clear'"
-    echo "alias celar='clear'"
-    echo "alias clera='clear'"
-    echo "alias caler='clear'"
-    echo "alias clare='clear'"
-    echo "alias caelr='clear'"
-    echo "alias cealr='clear'"
-    echo "alias celra='clear'"
-    echo "alias copy='xclip -sel clip'"
-    echo "alias paste='xclip -o -sel clip'"
-    echo ""
-    echo "aWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5ucG0tZ2xvYmFsL2JpbjoiKiBdXTsgdGhlbgogICBleHBvcnQgUEFUSD0iJEhPTUUvLm5wbS1nbG9iYWwvYmluOiRQQVRIIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5jYXJnby9iaW46IiogXV07IHRoZW4KICAgZXhwb3J0IFBBVEg9IiRIT01FLy5jYXJnby9iaW46JFBBVEgiCmZpCgppZiBbIC16ICIkR09QQVRIIiBdOyB0aGVuCiAgIGV4cG9ydCBHT1BBVEg9IiRIT01FL2dvIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRHT1BBVEgvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkUEFUSDokR09QQVRIL2JpbiIKZmkKCmlmIFtbICI6JFBBVEg6IiAhPSAqIjokSE9NRS8ubG9jYWwvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkSE9NRS8ubG9jYWwvYmluOiRQQVRIIgpmaQo=" | base64 -d 
-} >> ~/.zshrc
+alias_lines=(
+  "alias vim='nvim'"
+  "alias bat='batcat'"
+  "alias cbat='batcat --paging=never'"
+  "alias claer='clear'"
+  "alias celar='clear'"
+  "alias clera='clear'"
+  "alias caler='clear'"
+  "alias clare='clear'"
+  "alias caelr='clear'"
+  "alias cealr='clear'"
+  "alias celra='clear'"
+  "alias copy='xclip -sel clip'"
+  "alias paste='xclip -o -sel clip'"
+)
+
+path_blocks=(
+  'if [[ ":$PATH:" != *":$HOME/.npm-global/bin:"* ]]; then
+    export PATH="$HOME/.npm-global/bin:$PATH"
+fi'
+  'if [[ ":$PATH:" != *":$HOME/.cargo/bin:"* ]]; then
+    export PATH="$HOME/.cargo/bin:$PATH"
+fi'
+  'if [ -z "$GOPATH" ]; then
+    export GOPATH="$HOME/go"
+fi'
+  'if [[ ":$PATH:" != *":$GOPATH/bin:"* ]]; then
+    export PATH="$PATH:$GOPATH/bin"
+fi'
+  'if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
+    export PATH="$HOME/.local/bin:$PATH"
+fi'
+)
+
+# To ensure the last line of ~/.zshrc is empty
+ensure_last_line_empty() {
+  if [ -n "$(tail -n 1 ~/.zshrc)" ]; then
+    echo "" >> ~/.zshrc
+  fi
+}
+
+ensure_last_line_empty
+
+# Iterate over each alias line and check if it exists in ~/.zshrc
+for alias_line in "${alias_lines[@]}"; do
+  if ! grep -q "^$alias_line" ~/.zshrc; then
+    # If not, append the alias line to ~/.zshrc
+    echo "$alias_line" >> ~/.zshrc
+    # echo "Alias added to ~/.zshrc: $alias_line"
+  # else
+    # echo "Alias already exists in ~/.zshrc: $alias_line"
+  fi
+done
+
+# Iterate over each PATH export block and check if it exists in ~/.zshrc
+for path_block in "${path_blocks[@]}"; do
+  if ! grep -qF "$path_block" ~/.zshrc; then
+    ensure_last_line_empty
+    # If not, append the PATH export block to ~/.zshrc
+    echo "$path_block" >> ~/.zshrc
+    # echo "PATH export block added to ~/.zshrc"
+  # else
+    # echo "PATH export block already exists in ~/.zshrc"
+  fi
+done
 
 # Source the updated .zshrc
 source ~/.zshrc
