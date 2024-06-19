@@ -59,24 +59,6 @@ alias_lines=(
   "alias paste='xclip -o -sel clip'"
 )
 
-path_blocks=(
-  'if [[ ":$PATH:" != *":$HOME/.npm-global/bin:"* ]]; then
-    export PATH="$HOME/.npm-global/bin:$PATH"
-fi'
-  'if [[ ":$PATH:" != *":$HOME/.cargo/bin:"* ]]; then
-    export PATH="$HOME/.cargo/bin:$PATH"
-fi'
-  'if [ -z "$GOPATH" ]; then
-    export GOPATH="$HOME/go"
-fi'
-  'if [[ ":$PATH:" != *":$GOPATH/bin:"* ]]; then
-    export PATH="$PATH:$GOPATH/bin"
-fi'
-  'if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then
-    export PATH="$HOME/.local/bin:$PATH"
-fi'
-)
-
 # To ensure the last line of ~/.zshrc is empty
 ensure_last_line_empty() {
   if [ -n "$(tail -n 1 ~/.zshrc)" ]; then
@@ -97,17 +79,7 @@ for alias_line in "${alias_lines[@]}"; do
   fi
 done
 
-# Iterate over each PATH export block and check if it exists in ~/.zshrc
-for path_block in "${path_blocks[@]}"; do
-  if ! grep -qF "$path_block" ~/.zshrc; then
-    ensure_last_line_empty
-    # If not, append the PATH export block to ~/.zshrc
-    echo "$path_block" >> ~/.zshrc
-    # echo "PATH export block added to ~/.zshrc"
-  # else
-    # echo "PATH export block already exists in ~/.zshrc"
-  fi
-done
+echo "aWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5ucG0tZ2xvYmFsL2JpbjoiKiBdXTsgdGhlbgogICBleHBvcnQgUEFUSD0iJEhPTUUvLm5wbS1nbG9iYWwvYmluOiRQQVRIIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5jYXJnby9iaW46IiogXV07IHRoZW4KICAgZXhwb3J0IFBBVEg9IiRIT01FLy5jYXJnby9iaW46JFBBVEgiCmZpCgppZiBbIC16ICIkR09QQVRIIiBdOyB0aGVuCiAgIGV4cG9ydCBHT1BBVEg9IiRIT01FL2dvIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRHT1BBVEgvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkUEFUSDokR09QQVRIL2JpbiIKZmkKCmlmIFtbICI6JFBBVEg6IiAhPSAqIjokSE9NRS8ubG9jYWwvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkSE9NRS8ubG9jYWwvYmluOiRQQVRIIgpmaQo=" | base64 -d
 
 # Source the updated .zshrc
 source ~/.zshrc
