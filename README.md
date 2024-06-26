@@ -1,6 +1,6 @@
 <h1 align="center">Custom NvChad</h1>
 
-Use Neovim and Tmux with Alacritty.
+Use Neovim and Tmux with Alacritty on Kali Linux.
 
 ## Features
 
@@ -54,19 +54,7 @@ Use Neovim and Tmux with Alacritty.
 
 (Note: these are just 4-5 themes, NvChad has around 56 themes)
 </details>
-
-## UI related plugins used
-
-<details><summary> <b>Images (Click to expand!)</b></summary>
-
-<h3> Nvim-tree.lua </h3>
-
-Fast file tree:
-
-<kbd><img src="https://nvchad.com/features/nvimtree.webp"></kbd>
-
-<h3> Telescope-nvim </h3>
-
+ <h3> Telescope-nvim </h3>
 A fuzzy file finder, picker, sorter, previewer and much more:
 
 <kbd><img src="https://nvchad.com/features/telescope.webp"></kbd>
@@ -107,7 +95,7 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 ## Tmux Keybindings
 
 - The prefix key for Tmux is Control + Space for more convenient access.
-- 'ctrl + space + shift + |' => Bind | to split window horizontally and stay in the current directory
+- 'ctrl + space + shift + |' in=> Bind | to split window horizontally and stay in the current directory
 - 'ctrl + space + shift + _' => Bind _ to split window vertically and stay in the current directory
 - 'ctrl + h' => Left
 - 'ctrl + j' => Down
@@ -133,4 +121,3 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 
 - https://github.com/NvChad/NvChad
 - @lorvethe for making the NvChad logo.
-
