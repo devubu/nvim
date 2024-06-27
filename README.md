@@ -95,12 +95,15 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 ## Tmux Keybindings
 
 - The prefix key for Tmux is Control + Space for more convenient access.
-- 'ctrl + space + shift + |' => Bind | to split window horizontally and stay in the current directory
-- 'ctrl + space + shift + _' => Bind _ to split window vertically and stay in the current directory
+- 'ctrl + space + shift + |' or 'tmux split-window -h' to split window horizontally and stay in the current directory
+- 'ctrl + space + shift + _' or 'tmux split-window -v' to split window vertically and stay in the current directory
 - 'ctrl + h' => Left
 - 'ctrl + j' => Down
 - 'ctrl + k' => Up
 - 'ctrl + l' => Right
+- 'ctrl + m' to maximize the current pane
+- 'ctrl + space + [' to switch to tmux navigation mode allowing vertical movement through terminal output
+- 'q' to return from tmux navigation mode and resume regular input mode in the terminal pane
 
 ## Neovim Keybindings
 
@@ -116,6 +119,9 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - `k` or Up Arrow (`↑`) to move the cursor up one line
 - `l` or Right Arrow (`→`) to move the cursor right one character
 - '/' to search for text within the current file
+- 'space + h' to open a new horizonal terminal window within Neovim
+- 'space + v' to open a new vertical terminal window within Neovim
+- 'ctrl + x' to escape Neovim terminal window
 
 ## Credits
 
