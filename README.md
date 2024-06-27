@@ -112,6 +112,7 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - 'ctrl + space + n' to cycle through the list of windows in the tmux session in a forward direction
 - 'ctrl + space + p' to cycle through the list of windows in the tmux session in a backward direction
 - 'ctrl + space + [' to switch to tmux navigation mode allowing vertical movement through terminal output
+- 'y' to yank (copy) text currently under the cursor in tmux navigation mode
 - 'q' to return from tmux navigation mode and resume regular input mode in the terminal pane
 - 'tmux new -s <session_name>' to create a new, independent tmux session with a specified name
 - 'ctrl + space + d' or 'tmux detach' to detach from tmux session
@@ -140,6 +141,9 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - 'space + h' to open a new horizonal terminal window within Neovim
 - 'space + v' to open a new vertical terminal window within Neovim
 - 'ctrl + x' to escape Neovim terminal window
+- 'yy' to yank (copy) the entire current line into the default register
+- 'p' to paste the contents of the default register
+- 'dd' to cut the entire line
 
 ## Credits
 
