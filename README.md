@@ -2,6 +2,10 @@
 
 Use Neovim and Tmux with Alacritty on Kali Linux.
 
+View the [Tmux Keybindings](#tmux-keybindings)
+
+View the [Nvim Keybindings](#neovim-keybindings)
+
 ## Features
 
 - Custom Neovim configuration
