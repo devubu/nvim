@@ -131,6 +131,8 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - 'space + fw' to live grep
 - 'space + ff' to find files
 - 'space + e' to toggle nvimtree
+- 'i' to enter insert mode
+- 'escape key' to enter normal mode
 - 'shift + zz' or ':wq' to save and exit
 - 'shift + zq' or ':q' to exit without saving
 - `h` or Left Arrow (`←`) to move the cursor left one character
@@ -157,8 +159,6 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - 'b' to move the cursor backward to the beginning of the previous word
 - ':<line_number>' to navigate to a specific line number
 - ':%s/<old_word>/<new_word>/g' to replace all occurrences of a word with another word in the line
-- 'i' to enter insert mode
-- 'escape key' to enter normal mode
 
 ## Credits
 
