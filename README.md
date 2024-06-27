@@ -101,9 +101,19 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - 'ctrl + j' => Down
 - 'ctrl + k' => Up
 - 'ctrl + l' => Right
-- 'ctrl + m' to maximize the current pane
+- 'ctrl + space + m' to maximize the current pane
+- 'ctrl + space + c' to create a new window
+- 'ctrl + space + ,' to rename a window
+- 'ctrl + space + <window_number>' to switch directly to a specific window in the current tmux session
+- 'ctrl + space + n' to cycle through the list of windows in the tmux session in a forward direction
+- 'ctrl + space + p' to cycle through the list of windows in the tmux session in a backward direction
 - 'ctrl + space + [' to switch to tmux navigation mode allowing vertical movement through terminal output
 - 'q' to return from tmux navigation mode and resume regular input mode in the terminal pane
+- 'tmux new -s <session_name>' to create a new, independent tmux session with a specified name
+- 'ctrl + space + d' or 'tmux detach' to detach from tmux session
+- 'tmux ls' to list tmux sessions
+- 'tmux attach' to attach to the most recent tmux session
+- 'tmux attach-session -t <session_name>' to attach to a specific tmux session
 
 ## Neovim Keybindings
 
