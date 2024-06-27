@@ -114,6 +114,10 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - 'tmux ls' to list tmux sessions
 - 'tmux attach' to attach to the most recent tmux session
 - 'tmux attach-session -t <session_name>' to attach to a specific tmux session
+- 'tmux kill-session -t <session_name>' to end a specific tmux session
+- 'tmux kill-server' to end all tmux sessions
+- 'ctrl + space + x' to kill a pane
+- 'ctrl + space + shift + &' to kill a window
 
 ## Neovim Keybindings
 
