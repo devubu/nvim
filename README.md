@@ -144,6 +144,15 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - 'yy' to yank (copy) the entire current line into the default register
 - 'p' to paste the contents of the default register
 - 'dd' to cut the entire line
+- '<number_of_lines> + j' to move cursor down a specific number of lines
+- '<number_of_lines> + k' to move cursor up a specific number of lines
+- 'shift + g' to move cursor to the last line
+- 'gg' to move cursor to the first line
+- 'shift + 0' moves the cursor to the beginning of the current line
+- 'shift + 4' moves the cursor to the end of the current line
+- 'v + i + w' to select the current word under the cursor
+- 'w' to move the cursor forward to the beginning of the next word
+- 'b' to move the cursor backward to the beginning of the previous word
 
 ## Credits
 
