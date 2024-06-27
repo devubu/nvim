@@ -95,7 +95,7 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 ## Tmux Keybindings
 
 - The prefix key for Tmux is Control + Space for more convenient access.
-- 'ctrl + space + shift + |' in=> Bind | to split window horizontally and stay in the current directory
+- 'ctrl + space + shift + |' => Bind | to split window horizontally and stay in the current directory
 - 'ctrl + space + shift + _' => Bind _ to split window vertically and stay in the current directory
 - 'ctrl + h' => Left
 - 'ctrl + j' => Down
