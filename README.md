@@ -155,7 +155,8 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - 'shift + v' to select an entire line
 - 'w' to move the cursor forward to the beginning of the next word
 - 'b' to move the cursor backward to the beginning of the previous word
-- ':s/<old_word>/<new_word>/g' to replace all occurrences of a word with another word in the line
+- ':<line_number>' to navigate to a specific line number
+- - ':%s/<old_word>/<new_word>/g' to replace all occurrences of a word with another word in the line
 
 ## Credits
 
