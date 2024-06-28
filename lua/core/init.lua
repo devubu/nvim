@@ -33,6 +33,7 @@ opt.nu = true -- custom
 opt.relativenumber = true -- custom
 opt.numberwidth = 2
 opt.ruler = false
+opt.list = false -- custom
 
 -- disable nvim intro
 opt.shortmess:append "sI"
