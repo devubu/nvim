@@ -123,6 +123,7 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - 'tmux kill-server' to end all tmux sessions
 - 'ctrl + space + x' to kill a pane
 - 'ctrl + space + shift + &' to kill a window
+- 'tmux swap-window -s 3 -t 2' or 'ctrl + space + :' + 'swap-window -s 2 -t 3' + 'enter' to swap the source window (3) with the target window (2)
 
 ## Neovim Keybindings
 
