@@ -42,7 +42,7 @@ sudo chown root:root ~/Downloads/nvim.appimage
 sudo chmod +x ~/Downloads/nvim.appimage
 sudo mv ~/Downloads/nvim.appimage /usr/bin/nvim
 
-# Update .zshrc with aliases and environment variables
+# Update ~/.zshrc with aliases and environment variables
 alias_lines=(
   "alias vim='nvim'"
   "alias bat='batcat'"
@@ -81,6 +81,7 @@ done
 
 ensure_last_line_empty
 
+# Append the decoded content to ~/.zshrc, ensuring that several important directories (.npm-global/bin, .cargo/bin, GOPATH/bin, .local/bin) are included in the PATH, and sets GOPATH if it is not already set
 echo "aWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5ucG0tZ2xvYmFsL2JpbjoiKiBdXTsgdGhlbgogICBleHBvcnQgUEFUSD0iJEhPTUUvLm5wbS1nbG9iYWwvYmluOiRQQVRIIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5jYXJnby9iaW46IiogXV07IHRoZW4KICAgZXhwb3J0IFBBVEg9IiRIT01FLy5jYXJnby9iaW46JFBBVEgiCmZpCgppZiBbIC16ICIkR09QQVRIIiBdOyB0aGVuCiAgIGV4cG9ydCBHT1BBVEg9IiRIT01FL2dvIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRHT1BBVEgvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkUEFUSDokR09QQVRIL2JpbiIKZmkKCmlmIFtbICI6JFBBVEg6IiAhPSAqIjokSE9NRS8ubG9jYWwvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkSE9NRS8ubG9jYWwvYmluOiRQQVRIIgpmaQo=" | base64 -d >> ~/.zshrc
 
 # Source the updated .zshrc
