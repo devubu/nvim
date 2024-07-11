@@ -81,8 +81,32 @@ done
 
 ensure_last_line_empty
 
-# Append the decoded content to ~/.zshrc, ensuring that several important directories (.npm-global/bin, .cargo/bin, GOPATH/bin, .local/bin) are included in the PATH, and sets GOPATH if it is not already set
-echo "aWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5ucG0tZ2xvYmFsL2JpbjoiKiBdXTsgdGhlbgogICBleHBvcnQgUEFUSD0iJEhPTUUvLm5wbS1nbG9iYWwvYmluOiRQQVRIIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5jYXJnby9iaW46IiogXV07IHRoZW4KICAgZXhwb3J0IFBBVEg9IiRIT01FLy5jYXJnby9iaW46JFBBVEgiCmZpCgppZiBbIC16ICIkR09QQVRIIiBdOyB0aGVuCiAgIGV4cG9ydCBHT1BBVEg9IiRIT01FL2dvIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRHT1BBVEgvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkUEFUSDokR09QQVRIL2JpbiIKZmkKCmlmIFtbICI6JFBBVEg6IiAhPSAqIjokSE9NRS8ubG9jYWwvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkSE9NRS8ubG9jYWwvYmluOiRQQVRIIgpmaQo=" | base64 -d >> ~/.zshrc
+# Encoded content represents configuration settings for PATH and environment variables
+encoded_content="aWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5ucG0tZ2xvYmFsL2JpbjoiKiBdXTsgdGhlbgogICBleHBvcnQgUEFUSD0iJEhPTUUvLm5wbS1nbG9iYWwvYmluOiRQQVRIIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5jYXJnby9iaW46IiogXV07IHRoZW4KICAgZXhwb3J0IFBBVEg9IiRIT01FLy5jYXJnby9iaW46JFBBVEgiCmZpCgppZiBbIC16ICIkR09QQVRIIiBdOyB0aGVuCiAgIGV4cG9ydCBHT1BBVEg9IiRIT01FL2dvIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRHT1BBVEgvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkUEFUSDokR09QQVRIL2JpbiIKZmkKCmlmIFtbICI6JFBBVEg6IiAhPSAqIjokSE9NRS8ubG9jYWwvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkSE9NRS8ubG9jYWwvYmluOiRQQVRIIgpmaQo="
+
+# Decode to a temporary file
+temp_file=$(mktemp)
+echo "$encoded_content" | base64 -d > "$temp_file"
+
+# Check each line of the temporary file
+should_append=true
+while IFS= read -r line; do
+    if ! grep -Fxq "$line" ~/.zshrc; then
+        should_append=false
+        break
+    fi
+done < "$temp_file"
+
+# Append the content only if it is not already present in the ~/.zshrc
+if $should_append; then
+    echo "Content already present in ~/.zshrc"
+else
+    cat "$temp_file" >> ~/.zshrc
+    echo "Content appended to ~/.zshrc"
+fi
+
+# Clean up the temporary file
+rm "$temp_file"
 
 # Source the updated .zshrc
 source ~/.zshrc
