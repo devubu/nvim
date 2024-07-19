@@ -81,32 +81,67 @@ done
 
 ensure_last_line_empty
 
-# Encoded content represents configuration settings for PATH and environment variables
-encoded_content="aWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5ucG0tZ2xvYmFsL2JpbjoiKiBdXTsgdGhlbgogICBleHBvcnQgUEFUSD0iJEhPTUUvLm5wbS1nbG9iYWwvYmluOiRQQVRIIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRIT01FLy5jYXJnby9iaW46IiogXV07IHRoZW4KICAgZXhwb3J0IFBBVEg9IiRIT01FLy5jYXJnby9iaW46JFBBVEgiCmZpCgppZiBbIC16ICIkR09QQVRIIiBdOyB0aGVuCiAgIGV4cG9ydCBHT1BBVEg9IiRIT01FL2dvIgpmaQoKaWYgW1sgIjokUEFUSDoiICE9ICoiOiRHT1BBVEgvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkUEFUSDokR09QQVRIL2JpbiIKZmkKCmlmIFtbICI6JFBBVEg6IiAhPSAqIjokSE9NRS8ubG9jYWwvYmluOiIqIF1dOyB0aGVuCiAgIGV4cG9ydCBQQVRIPSIkSE9NRS8ubG9jYWwvYmluOiRQQVRIIgpmaQo="
+# Function to check and append a block if not found
+append_block() {
+    local block=("$@")
+    local block_str=$(printf '%s\n' "${block[@]}")
+    local block_found=1
 
-# Decode to a temporary file
-temp_file=$(mktemp)
-echo "$encoded_content" | base64 -d > "$temp_file"
+    # Use grep to search for the entire block in ~/.zshrc
+    for line in "${block[@]}"; do
+        if ! grep -qF -- "$line" ~/.zshrc; then
+            block_found=0
+            break
+        fi
+    done
 
-# Check each line of the temporary file
-should_append=true
-while IFS= read -r line; do
-    if ! grep -Fxq "$line" ~/.zshrc; then
-        should_append=false
-        break
+    # If any line of the block is not found, append the block
+    if [ "$block_found" -eq 0 ]; then
+        ensure_last_line_empty
+        printf '%s\n' "${block[@]}" >> ~/.zshrc
+        echo "Block appended to ~/.zshrc"
+    else
+        echo "Block already present in ~/.zshrc"
     fi
-done < "$temp_file"
+}
 
-# Append the content only if it is not already present in the ~/.zshrc
-if $should_append; then
-    echo "Content already present in ~/.zshrc"
-else
-    cat "$temp_file" >> ~/.zshrc
-    echo "Content appended to ~/.zshrc"
-fi
+# Define each block as an array of lines
+block1=(
+    'if [[ ":$PATH:" != *":$HOME/.npm-global/bin:"* ]]; then'
+    '   export PATH="$HOME/.npm-global/bin:$PATH"'
+    'fi'
+)
 
-# Clean up the temporary file
-rm "$temp_file"
+block2=(
+    'if [[ ":$PATH:" != *":$HOME/.cargo/bin:"* ]]; then'
+    '   export PATH="$HOME/.cargo/bin:$PATH"'
+    'fi'
+)
+
+block3=(
+    'if [ -z "$GOPATH" ]; then'
+    '   export GOPATH="$HOME/go"'
+    'fi'
+)
+
+block4=(
+    'if [[ ":$PATH:" != *":$GOPATH/bin:"* ]]; then'
+    '   export PATH="$PATH:$GOPATH/bin"'
+    'fi'
+)
+
+block5=(
+    'if [[ ":$PATH:" != *":$HOME/.local/bin:"* ]]; then'
+    '   export PATH="$HOME/.local/bin:$PATH"'
+    'fi'
+)
+
+# Call the function for each block
+append_block "${block1[@]}"
+append_block "${block2[@]}"
+append_block "${block3[@]}"
+append_block "${block4[@]}"
+append_block "${block5[@]}"
 
 # Source the updated .zshrc
 source ~/.zshrc
