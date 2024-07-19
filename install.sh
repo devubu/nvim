@@ -30,11 +30,50 @@ git clone https://github.com/tmux-plugins/tpm.git ~/.tmux/plugins/tpm
 git clone https://github.com/devubu/alacritty.git ~/.config/alacritty
 
 # Download and install FiraCode Nerd Font
-curl -o ~/Downloads/FiraCode.zip -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
-unzip -q ~/Downloads/FiraCode.zip -d ~/Downloads/FiraCode -x "LICENSE" "readme.md" && rm ~/Downloads/FiraCode.zip
-sudo chown -R root:root ~/Downloads/FiraCode
-sudo mv ~/Downloads/FiraCode /usr/share/fonts/truetype
-fc-cache -f -v
+FONT_DIR=~/Downloads/FiraCode
+FONT_ZIP=~/Downloads/FiraCode.zip
+FONT_INSTALL_DIR=/usr/share/fonts/truetype/FiraCode
+
+install_font() {
+    # Download the font
+    curl -o "$FONT_ZIP" -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
+    
+    # Extract the font
+    unzip -q "$FONT_ZIP" -d "$FONT_DIR" -x "LICENSE" "readme.md"
+    
+    # Remove the zip file
+    rm "$FONT_ZIP"
+    
+    # Move the font files to the system font directory
+    sudo chown -R root:root "$FONT_DIR"
+    sudo mv "$FONT_DIR" "$FONT_INSTALL_DIR"
+    
+    # Update the font cache
+    fc-cache -f -v
+}
+
+# Check if the font is already installed
+if [ -d "$FONT_INSTALL_DIR" ]; then
+    echo "FiraCode Nerd Font is already installed."
+else
+    # Ensure necessary directories exist
+    mkdir -p "$FONT_DIR"
+
+    # Check if the zip file already exists
+    if [ ! -f "$FONT_ZIP" ]; then
+        install_font
+    else
+        echo "Font zip file already downloaded. Skipping download."
+
+        # If the installation directory does not exist, reinstall the font
+        if [ ! -d "$FONT_INSTALL_DIR" ]; then
+            echo "Font installation appears incomplete. Re-installing..."
+            install_font
+        else
+            echo "FiraCode Nerd Font is already installed."
+        fi
+    fi
+fi
 
 # Download and install Neovim
 curl -o ~/Downloads/nvim.appimage -L https://github.com/neovim/neovim/releases/download/v0.10.0/nvim.appimage
