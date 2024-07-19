@@ -99,9 +99,9 @@ append_block() {
     if [ "$block_found" -eq 0 ]; then
         ensure_last_line_empty
         printf '%s\n' "${block[@]}" >> ~/.zshrc
-        echo "Block appended to ~/.zshrc"
-    else
-        echo "Block already present in ~/.zshrc"
+        # echo "Block appended to ~/.zshrc"
+    # else
+        # echo "Block already present in ~/.zshrc"
     fi
 }
 
