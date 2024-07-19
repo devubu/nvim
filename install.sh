@@ -30,21 +30,15 @@ git clone https://github.com/tmux-plugins/tpm.git ~/.tmux/plugins/tpm
 git clone https://github.com/devubu/alacritty.git ~/.config/alacritty
 
 # Download and install FiraCode Nerd Font
+FONT_URL="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip"
 FONT_DIR=~/Downloads/FiraCode
 FONT_ZIP=~/Downloads/FiraCode.zip
 FONT_INSTALL_DIR=/usr/share/fonts/truetype/FiraCode
 
 install_font() {
-    # Download the font
-    curl -o "$FONT_ZIP" -L https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip
-    
-    # Extract the font
+    curl -o "$FONT_ZIP" -L "$FONT_URL"
     unzip -q "$FONT_ZIP" -d "$FONT_DIR" -x "LICENSE" "readme.md"
-    
-    # Remove the zip file
     rm "$FONT_ZIP"
-    
-    # Move the font files to the system font directory
     sudo chown -R root:root "$FONT_DIR"
     sudo mv "$FONT_DIR" "$FONT_INSTALL_DIR"
     
@@ -76,10 +70,38 @@ else
 fi
 
 # Download and install Neovim
-curl -o ~/Downloads/nvim.appimage -L https://github.com/neovim/neovim/releases/download/v0.10.0/nvim.appimage
-sudo chown root:root ~/Downloads/nvim.appimage
-sudo chmod +x ~/Downloads/nvim.appimage
-sudo mv ~/Downloads/nvim.appimage /usr/bin/nvim
+APPIMAGE_URL="https://github.com/neovim/neovim/releases/download/v0.10.0/nvim.appimage"
+APPIMAGE_PATH=~/Downloads/nvim.appimage
+INSTALL_PATH=/usr/bin/nvim
+EXPECTED_VERSION="v0.10.0"
+
+get_installed_version() {
+    if [ -x "$INSTALL_PATH" ]; then
+        "$INSTALL_PATH" --version | head -n 1 | awk '{print $2}'
+    else
+        echo "not_installed"
+    fi
+}
+
+install_neovim() {
+    curl -o "$APPIMAGE_PATH" -L "$APPIMAGE_URL"
+    sudo chown root:root "$APPIMAGE_PATH"
+    sudo chmod +x "$APPIMAGE_PATH"
+    sudo mv "$APPIMAGE_PATH" "$INSTALL_PATH"
+}
+
+installed_version=$(get_installed_version)
+
+# Check if Neovim is already installed and up-to-date
+if [ "$installed_version" = "$EXPECTED_VERSION" ]; then
+    echo "Neovim $EXPECTED_VERSION is already installed."
+else
+    # Ensure necessary directories exist
+    mkdir -p ~/Downloads
+
+    # Install or update Neovim
+    install_neovim
+fi
 
 # Update ~/.zshrc with aliases and environment variables
 alias_lines=(
@@ -120,7 +142,7 @@ done
 
 ensure_last_line_empty
 
-# Function to check and append a block if not found
+# Check and append a block if not found
 append_block() {
     local block=("$@")
     local block_str=$(printf '%s\n' "${block[@]}")
