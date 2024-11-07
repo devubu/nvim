@@ -70,10 +70,10 @@ else
 fi
 
 # Download and install Neovim
-APPIMAGE_URL="https://github.com/neovim/neovim/releases/download/v0.10.0/nvim.appimage"
+APPIMAGE_URL="https://github.com/neovim/neovim/releases/download/v0.10.2/nvim.appimage"
 APPIMAGE_PATH=~/Downloads/nvim.appimage
 INSTALL_PATH=/usr/bin/nvim
-EXPECTED_VERSION="v0.10.0"
+EXPECTED_VERSION="v0.12.0"
 
 get_installed_version() {
     if [ -x "$INSTALL_PATH" ]; then
