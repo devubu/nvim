@@ -9,17 +9,19 @@ sudo apt install -y kali-linux-everything
 
 # Install packages
 sudo apt install -y xclip
+sudo apt install -y fd-find
 sudo apt install -y ripgrep
 sudo apt install -y fzf
 sudo apt install -y bat
+ln -s /usr/bin/batcat ~/.local/bin/bat
 sudo apt install -y alacritty
-sudo apt install -y nodejs
 sudo apt install -y npm
-sudo apt install -y python3.11-venv
+
 
 # Install Rust
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
-source "$HOME/.cargo/env"
+# curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y
+# source "$HOME/.cargo/env"
+sudo apt install -y rustc
 
 # Install Tmux configuration
 git clone https://github.com/devubu/tmux.git ~/.config/tmux
