@@ -19,15 +19,12 @@ View the [Nvim Keybindings](#neovim-keybindings)
 ## Installation
 
     git clone https://github.com/devubu/nvim.git ~/.config/nvim
-
     source ~/.config/nvim/install.sh
 
 ## Uninstall
 
     rm -rf ~/.config/nvim
-    
     rm -rf ~/.local/state/nvim
-    
     rm -rf ~/.local/share/nvim
 
 ## Showcase
