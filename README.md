@@ -22,13 +22,13 @@ View the [Nvim Keybindings](#neovim-keybindings)
 
     source ~/.config/nvim/install.sh
 
-## Update
+## Uninstall
 
-    git -C ~/.config/nvim pull
+    rm -rf ~/.config/nvim
     
-    zsh ~/.config/nvim/update.sh
+    rm -rf ~/.local/state/nvim
     
-    source ~/.config/nvim/install.sh
+    rm -rf ~/.local/share/nvim
 
 ## Showcase
 
