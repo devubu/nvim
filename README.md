@@ -145,6 +145,8 @@ A fuzzy file finder, picker, sorter, previewer and much more:
 - 'p' to paste the contents of the default register
 - 'dd' to cut the entire line
 - 'daw' to delete (cut) the entire word under the cursor
+- 'cc' to delete the entire current line and set Neovim to insert mode
+- 'ciw' to change (cut) the word under the cursor and set Neovim to insert mode
 - '<number_of_lines> + j' to move cursor down a specific number of lines
 - '<number_of_lines> + k' to move cursor up a specific number of lines
 - 'shift + g' to move cursor to the last line
