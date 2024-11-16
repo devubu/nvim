@@ -10,6 +10,7 @@ sudo apt install -y kali-linux-everything
 # Install packages
 sudo apt install -y xclip
 sudo apt install -y fd-find
+ln -s /usr/bin/fdfind ~/.local/bin/fd
 sudo apt install -y ripgrep
 sudo apt install -y fzf
 sudo apt install -y bat
