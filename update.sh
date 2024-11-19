@@ -1,4 +1,4 @@
-#!/bin/zsh
+#!/usr/bin/env zsh
 
 git -C ~/.config/nvim pull 
 git -C ~/.config/tmux pull
